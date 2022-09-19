@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import com.tunahankaryagdi.gamestoreapp.R
 import com.tunahankaryagdi.gamestoreapp.data.model.Game
 import com.tunahankaryagdi.gamestoreapp.databinding.FragmentHomeBinding
@@ -45,7 +47,11 @@ class HomeFragment : Fragment() {
     private fun initViews() {
         adapter = HomeAdapter(object : ItemClickListener {
             override fun onItemClick(game: Game) {
-                //go detail screen
+
+                val action =
+                    HomeFragmentDirections.actionHomeFragmentToDetailFragment(game.id.toString())
+
+                Navigation.findNavController(requireView()).navigate(action)
             }
 
         })
@@ -62,21 +68,11 @@ class HomeFragment : Fragment() {
         })
 
         viewModel.gameList.observe(viewLifecycleOwner, Observer { gameList ->
-
             if (gameList.isNotEmpty()) {
                 binding.pbHome.visibility = View.GONE
                 adapter.setList(gameList)
                 binding.rvList.visibility = View.VISIBLE
             }
-
-        })
-
-        viewModel.error.observe(viewLifecycleOwner, Observer { errorMessage ->
-
-            if (errorMessage.isNotBlank()) {
-                println(errorMessage)
-            }
         })
     }
-
 }

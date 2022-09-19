@@ -2,4 +2,8 @@
     <string name="app_name">GameStoreApp</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="system_requirements">System Requirements</string>
+    <string name="description">Description</string>
+    <string name="screenshots">Screenshots</string>
+    <string name="processor">Processor:</string>
 </resources>

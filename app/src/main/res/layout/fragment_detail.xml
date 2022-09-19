@@ -1,14 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</FrameLayout>
+    <data>
+
+        <variable
+            name="detailGame"
+            type="com.tunahankaryagdi.gamestoreapp.data.model.GameDetail" />
+    </data>
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/themeColor"
+            android:padding="12dp"
+            tools:context=".ui.detail.DetailFragment">
+
+
+            <ImageView
+                android:id="@+id/ivDetailThumbnail"
+                imageUrl="@{detailGame.thumbnail==null?null:detailGame.thumbnail}"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                app:layout_constraintBaseline_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDetailTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{detailGame.title}"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivDetailThumbnail"
+                tools:text="biılavıbaf" />
+
+            <TextView
+                android:id="@+id/tvDetailGenre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@{detailGame.genre}"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailTitle"
+                tools:text="Tür" />
+
+
+            <TextView
+                android:id="@+id/tvDetailDescTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/description"
+                android:textColor="#009688"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailGenre" />
+
+            <TextView
+                android:id="@+id/tvDetailDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:maxLines="840"
+                android:text="@{detailGame.description}"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailDescTitle"
+                tools:text="fdafakhfşkadhgşadhgjkşadhgadfjşadhgadfkşghadfgadfgfgagfafgfdafdfdafadfda" />
+
+
+            <TextView
+                android:id="@+id/tvDetailRequirements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/system_requirements"
+                android:textColor="#009688"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailDescription" />
+
+
+            <TextView
+                android:id="@+id/tvDetailOs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{detailGame.minimum_system_requirements.os}"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailRequirements"
+                tools:text="fdsfdsfsdfds" />
+
+            <TextView
+                android:id="@+id/tvDetailProcessor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{detailGame.minimum_system_requirements.processor}"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailOs"
+                tools:text="fdsfdsfsdfds" />
+
+            <TextView
+                android:id="@+id/tvDetailMemory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{detailGame.minimum_system_requirements.memory}"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailProcessor"
+                tools:text="fdsfdsfsdfds" />
+
+            <TextView
+                android:id="@+id/tvDetailGraphics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{detailGame.minimum_system_requirements.graphics}"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailMemory"
+                tools:text="fdsfdsfsdfds" />
+
+            <TextView
+                android:id="@+id/tvDetailStorage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{detailGame.minimum_system_requirements.storage}"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailGraphics"
+                tools:text="fdsfdsfsdfds" />
+
+            <TextView
+                android:id="@+id/tvDetailScreenshotsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/screenshots"
+                android:textColor="#009688"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailStorage" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvImageList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailScreenshotsTitle" />
+
+            <ProgressBar
+                android:id="@+id/pbDetail"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</layout>
+

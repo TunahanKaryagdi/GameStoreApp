@@ -17,7 +17,6 @@ class HomeViewModel @Inject constructor(private val repository: GameRepository) 
     var loading: MutableLiveData<Boolean> = MutableLiveData(true)
     var error: MutableLiveData<String> = MutableLiveData()
 
-
     init {
         getAll()
     }
@@ -25,7 +24,6 @@ class HomeViewModel @Inject constructor(private val repository: GameRepository) 
     fun getAll() {
         loading.value = true
         viewModelScope.launch {
-
             when (val result = repository.getAllGame()) {
 
                 is Resource.Success -> {

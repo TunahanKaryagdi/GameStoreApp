@@ -2,6 +2,7 @@ package com.tunahankaryagdi.gamestoreapp.data.repository
 
 import com.tunahankaryagdi.gamestoreapp.data.GameApi
 import com.tunahankaryagdi.gamestoreapp.data.model.Game
+import com.tunahankaryagdi.gamestoreapp.data.model.GameDetail
 import com.tunahankaryagdi.gamestoreapp.utils.Resource
 import javax.inject.Inject
 
@@ -18,4 +19,16 @@ class GameRepository @Inject constructor(private val api: GameApi) {
         }
         return Resource.Success(response)
     }
+
+    suspend fun getGameById(id: String): Resource<GameDetail> {
+        val response = try {
+            api.getDetailById(id)
+
+        } catch (e: Exception) {
+            return Resource.Error(e.localizedMessage)
+
+        }
+        return Resource.Success(response)
+    }
+
 }

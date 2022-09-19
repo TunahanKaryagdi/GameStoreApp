@@ -16,7 +16,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object Module {
 
-
     @Provides
     @Singleton
     fun provideRetrofit(): GameApi {
@@ -32,8 +31,5 @@ object Module {
     @Provides
     @Singleton
     fun provideRepository(api : GameApi)  = GameRepository(api)
-
-
-
 
 }
