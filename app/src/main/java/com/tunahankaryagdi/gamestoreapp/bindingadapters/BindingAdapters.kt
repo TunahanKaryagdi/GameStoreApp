@@ -7,12 +7,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.Group
 import androidx.databinding.BindingAdapter
 import coil.load
+import com.bumptech.glide.Glide
 import com.tunahankaryagdi.gamestoreapp.data.model.MinimumSystemRequirements
 
 @BindingAdapter("imageUrl")
 fun ImageView.loadUrl(url: String? = null) {
+
     url?.let {
-        this.load(url)
+        Glide.with(context).load(url).into(this)
     }
 
 }
